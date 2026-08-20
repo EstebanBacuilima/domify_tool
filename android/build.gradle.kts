@@ -16,6 +16,18 @@ subprojects {
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
 subprojects {
+    afterEvaluate {
+        val androidExtension = extensions.findByName("android")
+        if (androidExtension is com.android.build.api.dsl.CommonExtension) {
+            if (androidExtension.compileSdk == 37 &&
+                androidExtension.compileSdkMinor == null
+            ) {
+                androidExtension.compileSdkMinor = 0
+            }
+        }
+    }
+}
+subprojects {
     project.evaluationDependsOn(":app")
 }
 

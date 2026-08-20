@@ -6,7 +6,8 @@ plugins {
 
 android {
     namespace = "com.domifytech.domify_tool"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 37
+    compileSdkMinor = 0
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

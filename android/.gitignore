@@ -12,3 +12,6 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Gradle escribe aquí sus reports aunque el build de Flutter vaya a /build.
+/build/

@@ -54,11 +54,15 @@ app.*.map.json
 .claude/settings.local.json
 .qodo/
 
-# Configuración de entorno: base URL, credenciales de desarrollo.
-# Se versiona solo la plantilla.
+# Configuración de entorno (--dart-define-from-file).
+# El valor cambia por máquina: 10.0.2.2 en el emulador de Android, localhost
+# en el simulador de iOS, IP de la LAN en un móvil físico. Por eso se versiona
+# la plantilla y no el archivo real.
+config/*.json
+!config/*.example.json
+
 .env
 .env.*
-!.env.example
 
 # Cobertura
 coverage/

@@ -37,14 +37,32 @@ No se busca cobertura. Se cubren **los caminos de error**, que son los que no se
 pueden provocar a mano: timeout, 401, sin conexión. Y el error que se pisa con
 el siguiente `emit`.
 
+## Entorno
+
+El backend de desarrollo escucha en `http://localhost:5125/api/v1/`. El
+mecanismo (`--dart-define-from-file`, `Env`, cleartext en Android) está en la
+skill `flutter-project-setup`; aquí solo va el valor y lo que es de esta
+máquina.
+
+`config/dev.json` no se versiona porque el host cambia según dónde corra la
+app: `localhost` en el simulador de iOS, `10.0.2.2` en el emulador de Android,
+la IP de la LAN en un móvil físico —y entonces Kestrel tiene que escuchar en
+`0.0.0.0`—. La plantilla versionada es `config/dev.example.json`.
+
+En Android compilamos contra **API 37.0** (Android 17), no contra el 36 que
+propone Flutter: `flutter_secure_storage 11` exige 37 y el SDK ya solo publica
+plataformas con minor. `compileSdkMinor` está fijado en `android/app` y, para
+los plugins, en el `subprojects` de `android/build.gradle.kts`. `targetSdk` se
+queda donde lo pone Flutter.
+
 ## Estado
 
 Fase 0 cerrada (20 de agosto de 2026): proyecto creado
 (`com.domifytech.domify_tool`), estructura de carpetas, dependencias
 —`flutter_bloc`, `equatable`, `go_router`, `dio`, `flutter_secure_storage`—,
-`bootstrap.dart` con `AppBlocObserver`. Sin features todavía. Repositorio git
-inicializado, sin commits ni remoto.
+`bootstrap.dart` con `AppBlocObserver`. Configuración de entorno cerrada:
+`Env` validado en `bootstrap` antes del primer frame. Sin features todavía.
+Repositorio git inicializado, sin commits ni remoto.
 
 **Siguiente: fase 1, autenticación.** Falta del backend el endpoint de login
-(ruta, cuerpo, respuesta), cómo viaja el token, si hay refresh, y la base URL de
-desarrollo.
+(ruta, cuerpo, respuesta), cómo viaja el token y si hay refresh.

@@ -1,3 +1,4 @@
+import 'package:domify_tool/core/config/env.dart';
 import 'package:domify_tool/core/error/app_bloc_observer.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 Future<void> bootstrap() async {
   // Required because we touch platform channels before runApp.
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Set enviroments
+  Env.ensureValid();
 
   Bloc.observer = const AppBlocObserver();
 }
