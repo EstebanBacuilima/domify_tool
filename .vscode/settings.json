@@ -1,0 +1,81 @@
+{
+  // ---------------------------------------------------------------------
+  // Editor: applies to every file in the project
+  // ---------------------------------------------------------------------
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.rulers": [80],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ---------------------------------------------------------------------
+  // Dart / Flutter
+  // ---------------------------------------------------------------------
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    // Write it however you want, then save. Dart has exactly one official
+    // style, so there is no formatting debate to have.
+    "editor.formatOnSave": true,
+    // Two spaces is the Dart standard, not a preference. With nested widgets,
+    // four spaces pushes your code off the right edge of the screen.
+    "editor.tabSize": 2,
+    // 80 is where the Dart formatter wraps lines. The ruler shows you the line
+    // before the formatter moves it for you.
+    "editor.rulers": [80],
+    // Typing "(" or ";" re-lays-out the block immediately.
+    "editor.formatOnType": true,
+    // Enter confirms a newline, never an autocomplete suggestion. Prevents the
+    // classic accident of importing a random package by pressing Enter.
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.suggest.insertMode": "replace",
+    // On save: apply safe auto-fixes and sort imports (dart -> package -> relative).
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+
+  // Draws the guide lines that connect a widget to its children, so you can
+  // see the tree structure without counting brackets.
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+  // Shows the widget name greyed out next to its closing bracket.
+  "dart.closingLabels": true,
+
+  // Folders the analyzer should not scan. Keeps analysis fast.
+  "dart.analysisExcludedFolders": ["build", ".dart_tool"],
+
+  // Hot reload on every save: you save, the app updates in under a second and
+  // KEEPS its current state. This is the fastest feedback loop in Flutter.
+  // Options: never | manual | manualIfDirty | all | allIfDirty
+  "dart.flutterHotReloadOnSave": "all",
+  // Open DevTools automatically when debugging a Flutter app.
+  "dart.openDevTools": "flutter",
+
+  // Generated files (*.g.dart) are hidden from the explorer and from search.
+  // You never edit them by hand, so seeing them is pure noise.
+  "files.exclude": {
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true
+  },
+  "search.exclude": {
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true,
+    "**/build": true,
+    "**/.dart_tool": true
+  },
+
+  // ---------------------------------------------------------------------
+  // YAML (pubspec.yaml, analysis_options.yaml)
+  // ---------------------------------------------------------------------
+  // YAML is indentation-sensitive: a wrong indent is a broken file, not a
+  // style issue. Never tabs.
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.autoIndent": "keep"
+  }
+}
